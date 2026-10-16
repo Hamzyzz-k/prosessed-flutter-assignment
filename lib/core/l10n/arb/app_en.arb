@@ -1,0 +1,195 @@
+{
+  "@@locale": "en",
+  "appTitle": "ShopSphere",
+  "splashTagline": "Everything you love, in one place.",
+
+  "retry": "Try again",
+  "cancel": "Cancel",
+  "goBack": "Go back",
+
+  "errorTitleOffline": "You're offline",
+  "errorTitleTimeout": "Taking too long",
+  "errorTitleServer": "Something went wrong",
+  "errorTitleNotFound": "Not found",
+  "errorTitleGeneric": "Something went wrong",
+  "errorNetwork": "Check your connection and try again.",
+  "errorTimeout": "The server is slow to answer. Please try again.",
+  "errorServer": "Something went wrong on our side. Please try again.",
+  "errorNotFound": "We couldn't find that.",
+  "errorInvalidCredentials": "Invalid username or password.",
+  "errorSessionExpired": "Your session expired. Please sign in again.",
+  "errorUnexpected": "Something unexpected happened. Please try again.",
+
+  "loginTitle": "Welcome back",
+  "loginSubtitle": "Sign in to continue shopping.",
+  "usernameLabel": "Username",
+  "passwordLabel": "Password",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+  "signIn": "Sign in",
+  "useDemoAccount": "Use demo account",
+  "usernameRequired": "Enter your username",
+  "passwordRequired": "Enter your password",
+  "fieldTooShort": "Must be at least {min} characters",
+  "@fieldTooShort": {
+    "placeholders": { "min": { "type": "int" } }
+  },
+
+  "navShop": "Shop",
+  "navWishlist": "Wishlist",
+  "navCart": "Cart",
+  "navProfile": "Profile",
+  "cartBadgeLabel": "{count, plural, =0{Cart is empty} =1{1 item in cart} other{{count} items in cart}}",
+  "@cartBadgeLabel": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "searchHint": "Search products",
+  "clearSearch": "Clear search",
+  "categoryAll": "All",
+  "sortTooltip": "Sort products",
+  "sortTitle": "Sort by",
+  "sortRelevance": "Recommended",
+  "sortPriceLowHigh": "Price: low to high",
+  "sortPriceHighLow": "Price: high to low",
+  "sortRating": "Top rated",
+  "sortTitleAz": "Name: A to Z",
+  "noProductsTitle": "No products found",
+  "noProductsMessage": "Try a different search or category.",
+  "clearFilters": "Clear filters",
+  "resultsFor": "Results for \"{query}\"",
+  "@resultsFor": {
+    "placeholders": { "query": { "type": "String" } }
+  },
+  "searchClearsCategory": "Search looks in every category",
+  "endOfList": "That's everything for now.",
+  "offlineBanner": "You are offline",
+  "offlineCachedBanner": "You are offline · showing saved products",
+
+  "discountBadge": "-{percent}",
+  "@discountBadge": {
+    "placeholders": { "percent": { "type": "String" } }
+  },
+  "addToWishlist": "Add to wishlist",
+  "removeFromWishlist": "Remove from wishlist",
+  "ratingLabel": "Rated {rating} out of 5",
+  "@ratingLabel": {
+    "placeholders": { "rating": { "type": "String" } }
+  },
+  "priceLabel": "Price {price}, was {original}",
+  "@priceLabel": {
+    "placeholders": {
+      "price": { "type": "String" },
+      "original": { "type": "String" }
+    }
+  },
+
+  "productNotFoundTitle": "Product not found",
+  "productNotFoundMessage": "It may have been removed. Let's get you back to shopping.",
+  "backToShop": "Back to shop",
+  "byBrand": "by {brand}",
+  "@byBrand": {
+    "placeholders": { "brand": { "type": "String" } }
+  },
+  "inStock": "In stock",
+  "lowStock": "Only {count} left",
+  "@lowStock": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "outOfStock": "Out of stock",
+  "descriptionTitle": "Description",
+  "reviewsTitle": "Reviews ({count})",
+  "@reviewsTitle": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "noReviews": "No reviews yet.",
+  "quantity": "Quantity",
+  "increaseQuantity": "Increase quantity",
+  "decreaseQuantity": "Decrease quantity",
+  "addToCart": "Add to cart",
+  "addedToCart": "Added to cart",
+  "viewCart": "View cart",
+  "selectProductHint": "Pick a product to see its details here.",
+  "imagePosition": "Image {index} of {total}",
+  "@imagePosition": {
+    "placeholders": {
+      "index": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "cartTitle": "Your cart",
+  "cartEmptyTitle": "Your cart is empty",
+  "cartEmptyMessage": "Find something you love and add it here.",
+  "startShopping": "Start shopping",
+  "subtotal": "Subtotal",
+  "discount": "Discount",
+  "total": "Total",
+  "checkout": "Checkout",
+  "removeItem": "Remove",
+  "itemRemoved": "{title} removed",
+  "@itemRemoved": {
+    "placeholders": { "title": { "type": "String" } }
+  },
+  "undo": "Undo",
+  "itemCount": "{count, plural, =1{1 item} other{{count} items}}",
+  "@itemCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "checkoutTitle": "Review order",
+  "deliverTo": "Deliver to",
+  "payment": "Payment",
+  "cashOnDelivery": "Cash on delivery (demo)",
+  "orderSummary": "Order summary",
+  "placeOrder": "Place order",
+  "orderPlacedTitle": "Order placed!",
+  "orderPlacedMessage": "Order #{id} is confirmed. This is a demo, so nothing will be shipped.",
+  "@orderPlacedMessage": {
+    "placeholders": { "id": { "type": "int" } }
+  },
+  "youSaved": "You saved {amount}",
+  "@youSaved": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "continueShopping": "Continue shopping",
+
+  "wishlistTitle": "Wishlist",
+  "wishlistEmptyTitle": "No favourites yet",
+  "wishlistEmptyMessage": "Tap the heart on any product to save it here.",
+
+  "profileTitle": "Profile",
+  "email": "Email",
+  "phone": "Phone",
+  "appearance": "Appearance",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "language": "Language",
+  "developer": "Developer",
+  "errorLab": "Error Lab",
+  "errorLabSubtitle": "Trigger failures on purpose and see how the app recovers.",
+  "logout": "Log out",
+  "logoutConfirmTitle": "Log out?",
+  "logoutConfirmMessage": "Your cart and wishlist on this device will be cleared.",
+
+  "labIntro": "Each scenario calls a real DummyJSON test endpoint. Nothing here can break the app.",
+  "labServerError": "Server error (500)",
+  "labServerErrorDesc": "GET /http/500 → friendly error with retry.",
+  "labNotFound": "Missing product (404)",
+  "labNotFoundDesc": "Opens /products/9999 → \"Product not found\" with a way back.",
+  "labSlow": "Slow network (3 s)",
+  "labSlowDesc": "GET /products?delay=3000 → loader stays visible.",
+  "labTimeout": "Request timeout",
+  "labTimeoutDesc": "5 s delay with a 2 s timeout → timeout message.",
+  "labExpiredToken": "Expired access token",
+  "labExpiredTokenDesc": "Corrupts the access token, then loads your profile. The app refreshes it silently and retries.",
+  "labBadRefresh": "Bad refresh token",
+  "labBadRefreshDesc": "Corrupts both tokens. Refresh fails (403) and you are signed out with a message.",
+  "labOfflineHint": "Offline: turn on airplane mode and pull to refresh on Shop.",
+  "labRun": "Run",
+  "labSuccess": "Success in {ms} ms",
+  "@labSuccess": {
+    "placeholders": { "ms": { "type": "int" } }
+  }
+}
