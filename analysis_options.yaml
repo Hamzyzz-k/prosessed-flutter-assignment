@@ -4,9 +4,14 @@ analyzer:
   exclude:
     - build/**
     - lib/core/l10n/generated/**
+    - android/**
+    - ios/**
 
 linter:
   rules:
     # This is an app, not a published package: doc comments on every
     # public member would be noise.
     public_member_api_docs: false
+    # Prefer the familiar `const Foo(...)` constructor syntax over the new
+    # `const new(...)` form so the code reads like most Flutter codebases.
+    unnecessary_type_name_in_constructor: false
