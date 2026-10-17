@@ -82,8 +82,9 @@ class ErrorLabPage extends StatelessWidget {
                   title: l10n.labNotFound,
                   description: l10n.labNotFoundDesc,
                   action: FilledButton.tonal(
-                    onPressed: () =>
-                        unawaited(context.push(Routes.product(9999))),
+                    onPressed: () => unawaited(
+                      context.push(Routes.product(9999, from: Routes.profile)),
+                    ),
                     child: Text(l10n.labRun),
                   ),
                 ),
