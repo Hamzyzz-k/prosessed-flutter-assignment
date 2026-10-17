@@ -14,7 +14,12 @@ final class ProductsStarted extends ProductsEvent {
 
 /// Pull-to-refresh or "Try again".
 final class ProductsRefreshed extends ProductsEvent {
-  const ProductsRefreshed();
+  ProductsRefreshed({Completer<void>? completer})
+    : completer = completer ?? Completer<void>();
+
+  /// Completes when the refresh is done, so the pull-to-refresh spinner
+  /// knows when to stop.
+  final Completer<void> completer;
 }
 
 /// The grid scrolled near its end.

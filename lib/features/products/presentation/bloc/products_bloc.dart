@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,10 +53,14 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     ProductsRefreshed event,
     Emitter<ProductsState> emit,
   ) async {
-    await Future.wait([
-      if (state.categories.isEmpty) _loadCategories(emit),
-      _loadFirstPage(state.query, emit, keepContent: state.items.isNotEmpty),
-    ]);
+    try {
+      await Future.wait([
+        if (state.categories.isEmpty) _loadCategories(emit),
+        _loadFirstPage(state.query, emit, keepContent: state.items.isNotEmpty),
+      ]);
+    } finally {
+      if (!event.completer.isCompleted) event.completer.complete();
+    }
   }
 
   Future<void> _onSearchChanged(
