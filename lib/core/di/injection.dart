@@ -23,6 +23,9 @@ import 'package:shopsphere/features/cart/data/repositories/cart_repository_impl.
 import 'package:shopsphere/features/cart/domain/repositories/cart_repository.dart';
 import 'package:shopsphere/features/cart/domain/usecases/cart_usecases.dart';
 import 'package:shopsphere/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:shopsphere/features/diagnostics/data/repositories/diagnostics_repository_impl.dart';
+import 'package:shopsphere/features/diagnostics/domain/repositories/diagnostics_repository.dart';
+import 'package:shopsphere/features/diagnostics/presentation/cubit/error_lab_cubit.dart';
 import 'package:shopsphere/features/products/data/datasources/product_local_data_source.dart';
 import 'package:shopsphere/features/products/data/datasources/product_remote_data_source.dart';
 import 'package:shopsphere/features/products/data/repositories/product_repository_impl.dart';
@@ -103,6 +106,9 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<WishlistRepository>(sl.get<WishlistRepositoryImpl>)
     ..registerLazySingleton<SettingsRepository>(
       () => SettingsRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton<DiagnosticsRepository>(
+      () => DiagnosticsRepositoryImpl(sl(), sl()),
     );
 
   // Use cases
@@ -138,5 +144,6 @@ Future<void> configureDependencies() async {
     )
     ..registerFactory(() => CartCubit(sl(), sl(), sl(), sl()))
     ..registerFactory(() => WishlistCubit(sl()))
-    ..registerFactory(() => ProfileCubit(sl()));
+    ..registerFactory(() => ProfileCubit(sl()))
+    ..registerFactory(() => ErrorLabCubit(sl()));
 }
