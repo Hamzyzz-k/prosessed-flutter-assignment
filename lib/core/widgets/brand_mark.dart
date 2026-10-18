@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopsphere/core/theme/app_theme.dart';
 
 /// The ShopSphere logo: a soft gradient sphere holding a shopping bag.
 class BrandMark extends StatelessWidget {
@@ -8,21 +9,20 @@ class BrandMark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     return ExcludeSemantics(
       child: Container(
         width: size,
         height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [scheme.primary, scheme.tertiary],
+            colors: AppTheme.brandGradient,
           ),
           boxShadow: [
             BoxShadow(
-              color: scheme.primary.withValues(alpha: 0.25),
+              color: AppTheme.seed.withValues(alpha: 0.25),
               blurRadius: size / 4,
               offset: Offset(0, size / 12),
             ),
@@ -31,7 +31,7 @@ class BrandMark extends StatelessWidget {
         child: Icon(
           Icons.shopping_bag_rounded,
           size: size * 0.48,
-          color: scheme.onPrimary,
+          color: Colors.white,
         ),
       ),
     );

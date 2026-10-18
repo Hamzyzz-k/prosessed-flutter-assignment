@@ -8,6 +8,10 @@ import 'package:shopsphere/core/theme/app_spacing.dart';
 abstract final class AppTheme {
   static const seed = Color(0xFF4F46E5);
 
+  /// Same gradient as the launcher icon, so the logo looks identical
+  /// everywhere (it intentionally ignores light/dark tones).
+  static const List<Color> brandGradient = [seed, Color(0xFF9333EA)];
+
   static ThemeData get light => _build(Brightness.light);
   static ThemeData get dark => _build(Brightness.dark);
 
