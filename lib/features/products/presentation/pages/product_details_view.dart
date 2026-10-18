@@ -30,7 +30,10 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // Blends into the white image area below it.
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
+      ),
       body: ProductDetailsView(
         productId: productId,
         onBack: () =>

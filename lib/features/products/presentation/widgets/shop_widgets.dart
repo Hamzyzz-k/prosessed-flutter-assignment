@@ -33,7 +33,7 @@ class _ProductGridDelegate extends SliverGridDelegate {
   static const double _spacing = Insets.md;
 
   /// Title (2 lines) + rating + price at 1× text, plus fixed padding.
-  static const _textBlock = 112.0;
+  static const _textBlock = 96.0;
   static const _padding = 20.0;
 
   @override

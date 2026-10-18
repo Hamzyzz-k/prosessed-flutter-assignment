@@ -28,6 +28,7 @@ class PriceText extends StatelessWidget {
           : finalLabel,
       excludeSemantics: true,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.baseline,
         textBaseline: TextBaseline.alphabetic,
         children: [
