@@ -19,6 +19,8 @@ abstract final class AppTheme {
     final scheme = ColorScheme.fromSeed(
       seedColor: seed,
       brightness: brightness,
+      // Keeps primary close to the brand indigo instead of a muted tone.
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     );
     final isDark = brightness == Brightness.dark;
     final base = ThemeData(colorScheme: scheme, useMaterial3: true);
