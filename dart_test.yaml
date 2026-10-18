@@ -1,0 +1,3 @@
+tags:
+  golden:
+    description: Pixel comparisons; run on one OS to avoid font differences.

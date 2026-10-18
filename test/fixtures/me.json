@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "firstName": "Emily",
+  "lastName": "Johnson",
+  "username": "emilys",
+  "email": "emily.johnson@x.dummyjson.com",
+  "phone": "+81 965-431-3024",
+  "image": "https://dummyjson.com/icon/emilys/128",
+  "gender": "female"
+}
