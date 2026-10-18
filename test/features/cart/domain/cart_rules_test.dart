@@ -25,14 +25,19 @@ void main() {
       expect(const CalculateCartSummary()(const []), CartSummary.empty);
     });
 
-    test('rounds to cents once, at the end', () {
-      final summary = CartSummary.of([
-        CartItem(product: product(price: 9.99, discount: 10.48), quantity: 3),
-      ]);
+    test('totals match the unit price on screen (no stray cents)', () {
+      final item = CartItem(
+        product: product(price: 9.99, discount: 10.48),
+        quantity: 2,
+      );
+      final summary = CartSummary.of([item]);
 
-      expect(summary.subtotal, 29.97);
-      expect(summary.discount, 3.14);
-      expect(summary.total, 26.83);
+      // Unit price shows $8.94, so two must cost $17.88, not $17.89.
+      expect(item.product.finalPrice, 8.94);
+      expect(item.total, 17.88);
+      expect(summary.subtotal, 19.98);
+      expect(summary.discount, 2.10);
+      expect(summary.total, 17.88);
     });
   });
 

@@ -8,12 +8,14 @@ class CartItem extends Equatable {
   final int quantity;
 
   /// Price before discount × quantity.
-  double get subtotal => product.price * quantity;
+  double get subtotal => roundMoney(product.price * quantity);
+
+  /// Built from the unit price the shopper sees ($8.94 × 2 = $17.88), so
+  /// every number on screen adds up exactly.
+  double get total => roundMoney(product.finalPrice * quantity);
 
   /// Money saved on this line.
-  double get discount => subtotal * product.discountPercentage / 100;
-
-  double get total => subtotal - discount;
+  double get discount => roundMoney(subtotal - total);
 
   /// The most of this product the shopper can buy.
   int get maxQuantity => product.stock;
@@ -36,20 +38,18 @@ class CartSummary extends Equatable {
 
   factory CartSummary.of(List<CartItem> items) {
     var subtotal = 0.0;
-    var discount = 0.0;
+    var total = 0.0;
     var count = 0;
     for (final item in items) {
       subtotal += item.subtotal;
-      discount += item.discount;
+      total += item.total;
       count += item.quantity;
     }
-    // Round each total once, at the end, so cents never drift.
-    final roundedSubtotal = roundMoney(subtotal);
-    final roundedDiscount = roundMoney(discount);
+    // Lines are already in cents; rounding again only removes float noise.
     return CartSummary(
-      subtotal: roundedSubtotal,
-      discount: roundedDiscount,
-      total: roundMoney(roundedSubtotal - roundedDiscount),
+      subtotal: roundMoney(subtotal),
+      discount: roundMoney(subtotal - total),
+      total: roundMoney(total),
       itemCount: count,
     );
   }
