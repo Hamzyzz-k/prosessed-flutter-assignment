@@ -15,6 +15,7 @@ class CartState extends Equatable {
     this.isLoaded = false,
     this.checkout = CheckoutStatus.idle,
     this.order,
+    this.orderSummary,
     this.failure,
   });
 
@@ -27,6 +28,10 @@ class CartState extends Equatable {
 
   /// Set after a successful order, for the confirmation screen.
   final OrderConfirmation? order;
+
+  /// The totals the shopper confirmed. DummyJSON rounds its own totals
+  /// differently, so the confirmation screen shows these instead.
+  final CartSummary? orderSummary;
   final Failure? failure;
 
   bool get isEmpty => items.isEmpty;
@@ -42,6 +47,7 @@ class CartState extends Equatable {
     isLoaded,
     checkout,
     order,
+    orderSummary,
     failure,
   ];
 }
@@ -100,6 +106,7 @@ class CartCubit extends Cubit<CartState> {
             isLoaded: true,
             checkout: CheckoutStatus.success,
             order: value,
+            orderSummary: state.summary,
           ),
         );
       case Err(:final failure):
@@ -127,6 +134,7 @@ class CartCubit extends Cubit<CartState> {
       isLoaded: state.isLoaded,
       checkout: checkout,
       order: state.order,
+      orderSummary: state.orderSummary,
       failure: failure,
     );
   }

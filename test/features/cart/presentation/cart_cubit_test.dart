@@ -84,10 +84,14 @@ void main() {
         when(() => repository.placeOrder(userId: 1, items: any(named: 'items')))
             .thenAnswer((_) async => const Ok(order)),
     build: build,
-    seed: () => CartState(
-      items: [CartItem(product: product(), quantity: 2)],
-      isLoaded: true,
-    ),
+    seed: () {
+      final items = [CartItem(product: product(), quantity: 2)];
+      return CartState(
+        items: items,
+        summary: CartSummary.of(items),
+        isLoaded: true,
+      );
+    },
     act: (cubit) => cubit.placeOrder(userId: 1),
     expect: () => [
       isA<CartState>().having(
@@ -98,7 +102,8 @@ void main() {
       isA<CartState>()
           .having((s) => s.checkout, 'checkout', CheckoutStatus.success)
           .having((s) => s.items, 'items', isEmpty)
-          .having((s) => s.order, 'order', order),
+          .having((s) => s.order, 'order', order)
+          .having((s) => s.orderSummary?.total, 'confirmed total', 180),
     ],
   );
 

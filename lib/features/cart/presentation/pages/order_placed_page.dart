@@ -24,6 +24,9 @@ class OrderPlacedPage extends StatelessWidget {
     final order = context.select<CartCubit, OrderConfirmation?>(
       (c) => c.state.order,
     );
+    final saved = context.select<CartCubit, double>(
+      (c) => c.state.orderSummary?.discount ?? 0,
+    );
     final palette = context.palette;
 
     return PopScope(
@@ -76,16 +79,14 @@ class OrderPlacedPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      if (order.saved > 0) ...[
+                      if (saved > 0) ...[
                         Gaps.lg,
                         Chip(
                           avatar: Icon(
                             Icons.savings_outlined,
                             color: palette.success,
                           ),
-                          label: Text(
-                            l10n.youSaved(Formatters.price(order.saved)),
-                          ),
+                          label: Text(l10n.youSaved(Formatters.price(saved))),
                         ),
                       ],
                     ],
