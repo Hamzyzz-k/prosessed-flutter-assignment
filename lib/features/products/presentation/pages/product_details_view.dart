@@ -386,7 +386,8 @@ class _AddToCartBar extends StatelessWidget {
   Future<void> _add(BuildContext context) async {
     final l10n = context.l10n;
     final messenger = ScaffoldMessenger.of(context);
-    final router = GoRouter.of(context);
+    // Optional so the view also works outside the app router (tests).
+    final router = GoRouter.maybeOf(context);
     unawaited(HapticFeedback.lightImpact());
     await context.read<CartCubit>().add(product, quantity: quantity);
     messenger
@@ -394,10 +395,12 @@ class _AddToCartBar extends StatelessWidget {
       ..showSnackBar(
         SnackBar(
           content: Text(l10n.addedToCart),
-          action: SnackBarAction(
-            label: l10n.viewCart,
-            onPressed: () => router.go(Routes.cart),
-          ),
+          action: router == null
+              ? null
+              : SnackBarAction(
+                  label: l10n.viewCart,
+                  onPressed: () => router.go(Routes.cart),
+                ),
         ),
       );
   }
