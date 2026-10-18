@@ -15,7 +15,10 @@ class DiagnosticsRepositoryImpl implements DiagnosticsRepository {
   final ApiClient _client;
   final TokenStorage _tokens;
 
-  static const _brokenToken = 'shopsphere.error-lab.invalid-token';
+  // No dots on purpose: DummyJSON answers a malformed JWT ("a.b.c") with a
+  // 500, but a plain unknown token with the 401 a real expiry produces.
+  static const _expiredAccess = 'expired-access-token';
+  static const _invalidRefresh = 'invalid-refresh-token';
 
   @override
   Future<Result<Duration>> run(LabScenario scenario) {
@@ -38,14 +41,14 @@ class DiagnosticsRepositoryImpl implements DiagnosticsRepository {
         case LabScenario.expiredAccessToken:
           final refresh = await _tokens.readRefreshToken();
           await _tokens.saveTokens(
-            accessToken: _brokenToken,
-            refreshToken: refresh ?? _brokenToken,
+            accessToken: _expiredAccess,
+            refreshToken: refresh ?? _invalidRefresh,
           );
           await _client.get(ApiEndpoints.me, requiresAuth: true);
         case LabScenario.badRefreshToken:
           await _tokens.saveTokens(
-            accessToken: _brokenToken,
-            refreshToken: _brokenToken,
+            accessToken: _expiredAccess,
+            refreshToken: _invalidRefresh,
           );
           await _client.get(ApiEndpoints.me, requiresAuth: true);
       }

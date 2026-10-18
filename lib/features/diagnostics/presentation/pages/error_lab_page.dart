@@ -134,7 +134,7 @@ class _ScenarioCard extends StatelessWidget {
       LabHandled(:final failure) => (
         Icons.shield_outlined,
         theme.colorScheme.primary,
-        '${failure.title(l10n)} · ${failure.describe(l10n)}',
+        failure.describe(l10n),
       ),
     };
 
