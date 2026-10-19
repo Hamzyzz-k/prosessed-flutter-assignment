@@ -218,7 +218,7 @@ flutter test --coverage              # writes coverage/lcov.info
 flutter test --exclude-tags golden   # what CI runs
 ```
 
-- **121 tests**, all passing: repositories (success, server failure, network failure, offline cache),
+- **122 tests**, all passing: repositories (success, server failure, network failure, offline cache),
   use cases, every bloc/cubit (`bloc_test`), JSON parsing from real API fixtures, the auth interceptor
   against a fake HTTP adapter, widget tests for every screen except the app shell and router, a
   golden test, and **no-overflow tests at 1.3× font scale** on a 360 dp phone and in landscape.
