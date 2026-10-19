@@ -27,36 +27,38 @@ class PriceText extends StatelessWidget {
           ? context.l10n.priceLabel(finalLabel, originalLabel)
           : finalLabel,
       excludeSemantics: true,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.alphabetic,
-        children: [
-          Text(
-            finalLabel,
-            maxLines: 1,
-            style:
-                (large
-                        ? theme.textTheme.headlineSmall
-                        : theme.textTheme.titleMedium)
-                    ?.copyWith(fontWeight: FontWeight.w800),
-          ),
-          if (hasDiscount) ...[
-            Gaps.sm,
-            // Shrinks with an ellipsis on narrow cards instead of wrapping.
-            Flexible(
-              child: Text(
+      // One unit: if the line is too wide (large font, narrow card) it scales
+      // down together instead of overflowing or cutting a digit off.
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: AlignmentDirectional.centerStart,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Text(
+              finalLabel,
+              maxLines: 1,
+              style:
+                  (large
+                          ? theme.textTheme.headlineSmall
+                          : theme.textTheme.titleMedium)
+                      ?.copyWith(fontWeight: FontWeight.w800),
+            ),
+            if (hasDiscount) ...[
+              Gaps.sm,
+              Text(
                 originalLabel,
                 maxLines: 1,
-                overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                   decoration: TextDecoration.lineThrough,
                 ),
               ),
-            ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

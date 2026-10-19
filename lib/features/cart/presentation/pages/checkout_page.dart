@@ -151,7 +151,9 @@ class _Section extends StatelessWidget {
                 children: [
                   Icon(icon, size: 20, color: theme.colorScheme.primary),
                   Gaps.sm,
-                  Text(title, style: theme.textTheme.titleMedium),
+                  Expanded(
+                    child: Text(title, style: theme.textTheme.titleMedium),
+                  ),
                 ],
               ),
               Gaps.md,
