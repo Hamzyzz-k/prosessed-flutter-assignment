@@ -65,7 +65,7 @@ handling can be seen, not just claimed.
 - [x] **Wishlist** stored locally
 - [x] **Offline mode**: cached first page plus "You are offline" banner; auto-refresh when back online
 - [x] **Localisation**: English + हिन्दी, switchable in Profile, persisted
-- [x] **Widget tests and a golden test**
+- [x] **Widget tests and a golden test**, plus automated 1.3× font-scale overflow checks
 - [x] **CI**: GitHub Actions runs format, analyze, tests with coverage, and builds the APK
 
 ### Extras (not in the brief)
@@ -78,9 +78,9 @@ handling can be seen, not just claimed.
 ### Not done / known limitations
 
 - No integration (device-driven) tests. Coverage comes from unit and widget tests.
+- The router, app shell (bottom bar ↔ rail) and the DI wiring are verified by hand on the emulator,
+  not by automated tests.
 - Golden tests run locally only: font rendering differs between Windows and the Linux CI runner.
-- Screens the brief doesn't list as test targets (Profile, Checkout, Error Lab, Wishlist) have no
-  widget tests yet.
 
 ## 3. Tech stack
 
@@ -218,11 +218,13 @@ flutter test --coverage              # writes coverage/lcov.info
 flutter test --exclude-tags golden   # what CI runs
 ```
 
-- **101 tests**, all passing: repositories (success, server failure, network failure, offline cache),
+- **121 tests**, all passing: repositories (success, server failure, network failure, offline cache),
   use cases, every bloc/cubit (`bloc_test`), JSON parsing from real API fixtures, the auth interceptor
-  against a fake HTTP adapter, widget tests for the main screens, and a golden test.
-- **Coverage**: about 81% of lines in files the tests load (domain 97%, data 83%, presentation 85%).
-  Counting the screens that have no widget tests yet as 0%, it is roughly 65% overall.
+  against a fake HTTP adapter, widget tests for every screen except the app shell and router, a
+  golden test, and **no-overflow tests at 1.3× font scale** on a 360 dp phone and in landscape.
+- **Coverage**: 82.5% of lines in files the tests load (domain 96%, data 83%, presentation 87%).
+  `flutter test --coverage` leaves out files no test imports (router, app shell, DI, `main.dart`);
+  counting those as 0%, the whole-project figure is about 75%.
 
 ## 9. Test credentials
 
@@ -241,7 +243,7 @@ flutter test --exclude-tags golden   # what CI runs
 - **Hand-written models over freezed**: no build step, and every line is easy to explain.
 
 With more time: Hive/Isar for a larger offline catalogue, `patrol` integration tests on real devices,
-flavours with `--dart-define`, crash reporting, and widget tests for the remaining screens.
+flavours with `--dart-define`, crash reporting, and tests for the router and app shell.
 
 ## 11. Use of AI tools
 
