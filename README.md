@@ -88,7 +88,7 @@ handling can be seen, not just claimed.
 |---|---|
 | Flutter | 3.47.7 (stable) |
 | Dart | 3.13.5 |
-| Android | minSdk = Flutter default (Android 8.0+ supported), targetSdk 36 |
+| Android | minSdk 24 (Android 7.0+, so the required 8.0+ is covered), targetSdk 36 |
 
 | Package | Why |
 |---|---|
